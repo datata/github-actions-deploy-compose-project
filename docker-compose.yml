@@ -1,0 +1,13 @@
+version: "3.6"
+
+services:
+  web_devops:
+    tty: true
+    container_name: web_devops
+    restart: unless-stopped
+    build: .
+    command: sh -c 'node index.js'
+    ports:
+      - "3006:3006"
+    volumes:
+      - ./:/var/www/html
