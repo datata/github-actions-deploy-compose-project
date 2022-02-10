@@ -25,3 +25,13 @@ jobs:
       - uses: actions/checkout@v2
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build docker image
+        run: docker build -t back .
+      - name: Add Tags to docker image
+        run: |
+          docker tag back ${{ secrets.DOCKER_USER }}/back:${{ github.sha }}
+          docker tag back ${{ secrets.DOCKER_USER }}/back:latest
+      - name: Push docker image to docker hub
+        run: |
+          docker push ${{ secrets.DOCKER_USER }}/back:${{ github.sha }}
+          docker push ${{ secrets.DOCKER_USER }}/back:latest
