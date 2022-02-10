@@ -6,7 +6,7 @@ services:
     container_name: web_devops
     restart: unless-stopped
     build: .
-    command: sh -c 'node index.js'
+    command: sh -c 'npm install && npm run dev'
     ports:
       - "3006:3006"
     volumes:
