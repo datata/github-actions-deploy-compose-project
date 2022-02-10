@@ -1,15 +1,24 @@
 {
   "name": "devops-final-project",
   "version": "1.0.0",
-  "description": "",
+  "description": "devops",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/datata/github-actions-deploy-compose-project.git"
+  },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "dev": "nodemon run index.js"
   },
   "author": "datata",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.0",
     "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15"
   }
 }
