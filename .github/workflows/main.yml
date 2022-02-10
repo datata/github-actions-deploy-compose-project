@@ -26,11 +26,11 @@ jobs:
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Build docker image
-        run: docker build -t back .
+        run: docker build -t devops_project .
       - name: Add Tags to docker image
         run: |
-          docker tag back ${{ secrets.DOCKER_USER }}/devops_project:${{ github.sha }}
-          docker tag back ${{ secrets.DOCKER_USER }}/devops_project:latest
+          docker tag devops_project ${{ secrets.DOCKER_USER }}/devops_project:${{ github.sha }}
+          docker tag devops_project ${{ secrets.DOCKER_USER }}/devops_project:latest
       - name: Push docker image to docker hub
         run: |
           docker push ${{ secrets.DOCKER_USER }}/devops_project:${{ github.sha }}
