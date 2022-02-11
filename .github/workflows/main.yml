@@ -6,37 +6,43 @@ on:
       - master
       
 jobs:
-  ci:
-    runs-on: ubuntu-latest
+  # ci:
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-      - name: Install node dependencies
-        run: npm install
-      - name: run jest tests
-        run: npm test
-  cd:
-    runs-on: ubuntu-latest
-    needs: ci
-    steps:
-      - uses: actions/checkout@v2
-      - name: Docker login
-        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
-      - name: Build docker image
-        run: docker build -t devops_project .
-      - name: Add Tags to docker image
-        run: |
-          docker tag devops_project ${{ secrets.DOCKER_USER }}/devops_project:${{ github.sha }}
-          docker tag devops_project ${{ secrets.DOCKER_USER }}/devops_project:latest
-      - name: Push docker image to docker hub
-        run: |
-          docker push ${{ secrets.DOCKER_USER }}/devops_project:${{ github.sha }}
-          docker push ${{ secrets.DOCKER_USER }}/devops_project:latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '14'
+  #     - name: Install node dependencies
+  #       run: npm install
+  #     - name: run jest tests
+  #       run: npm test
+  # cd:
+  #   runs-on: ubuntu-latest
+  #   needs: ci
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Docker login
+  #       run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+  #     - name: Build docker image
+  #       run: docker build -t devops_project .
+  #     - name: Add Tags to docker image
+  #       run: |
+  #         docker tag devops_project ${{ secrets.DOCKER_USER }}/devops_project:${{ github.sha }}
+  #         docker tag devops_project ${{ secrets.DOCKER_USER }}/devops_project:latest
+  #     - name: Push docker image to docker hub
+  #       run: |
+  #         docker push ${{ secrets.DOCKER_USER }}/devops_project:${{ github.sha }}
+  #         docker push ${{ secrets.DOCKER_USER }}/devops_project:latest
   deploy:
     runs-on: ubuntu-latest
+    needs: cd
     steps:
-      - name: heroku login
-        run: heroku login -u ${{ secrets.HEROKU_USER }} -p ${{ secrets.HEROKU_PASSWORD }}
+      - name: ls -a via ssh
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: ls -a
+          host: ${{ secrets.DIGITAL_OCEAN_HOST }}
+          username: ${{ secrets.DIGITAL_OCEAN_USER }}
+          password: ${{ secrets.DIGITAL_OCEAN_PASSWORD }}
