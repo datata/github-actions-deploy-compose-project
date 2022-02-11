@@ -46,6 +46,8 @@ jobs:
             rm -rf github-actions-deploy-compose-project
             git clone https://github.com/datata/github-actions-deploy-compose-project.git
             cd github-actions-deploy-compose-project
+            docker-compose down
+            docker pull datata/devops_project
             mv docker-compose-prod.yml docker-compose.yml
             docker-compose up -d
           host: ${{ secrets.DIGITAL_OCEAN_HOST }}
