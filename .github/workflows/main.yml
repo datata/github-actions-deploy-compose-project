@@ -43,7 +43,10 @@ jobs:
         uses: garygrossgarten/github-action-ssh@release
         with:
           command: |
-            git clone https://github.com/datata/github-actions-deploy-compose-project.git
+            rm -rf github-actions-deploy-compose-project
+            git clone https://github.com/datata/github-actions-deploy-compose-project.git as app
+            cd app
+            mv docker-compose-prod.yml docker-compose.yml
           host: ${{ secrets.DIGITAL_OCEAN_HOST }}
           username: ${{ secrets.DIGITAL_OCEAN_USER }}
           password: ${{ secrets.DIGITAL_OCEAN_PASSWORD }}
