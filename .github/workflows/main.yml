@@ -37,7 +37,7 @@ jobs:
   #         docker push ${{ secrets.DOCKER_USER }}/devops_project:latest
   deploy:
     runs-on: ubuntu-latest
-    needs: cd
+    # needs: cd
     steps:
       - name: ls -a via ssh
         uses: garygrossgarten/github-action-ssh@release
