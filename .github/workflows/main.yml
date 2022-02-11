@@ -35,3 +35,8 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKER_USER }}/devops_project:${{ github.sha }}
           docker push ${{ secrets.DOCKER_USER }}/devops_project:latest
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: heroku login
+        run: heroku login -u ${{ secrets.HEROKU_USER }} -p ${{ secrets.HEROKU_PASSWORD }}
