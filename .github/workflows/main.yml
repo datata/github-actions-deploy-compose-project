@@ -43,6 +43,6 @@ jobs:
         with:
           command: |
             git clone https://github.com/datata/github-actions-deploy-compose-project.git
-        host: ${{ secrets.DIGITAL_OCEAN_HOST }}
-        username: ${{ secrets.DIGITAL_OCEAN_USER }}
-        password: ${{ secrets.DIGITAL_OCEAN_PASSWORD }}
+          host: ${{ secrets.DIGITAL_OCEAN_HOST }}
+          username: ${{ secrets.DIGITAL_OCEAN_USER }}
+          password: ${{ secrets.DIGITAL_OCEAN_PASSWORD }}
