@@ -47,6 +47,7 @@ jobs:
             git clone https://github.com/datata/github-actions-deploy-compose-project.git
             cd github-actions-deploy-compose-project
             mv docker-compose-prod.yml docker-compose.yml
+            docker-compose up -d
           host: ${{ secrets.DIGITAL_OCEAN_HOST }}
           username: ${{ secrets.DIGITAL_OCEAN_USER }}
           password: ${{ secrets.DIGITAL_OCEAN_PASSWORD }}
