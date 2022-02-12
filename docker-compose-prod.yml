@@ -8,4 +8,4 @@ services:
     restart: unless-stopped
     command: sh -c 'npm install && node index.js'
     ports:
-      - "3006:3006"
+      - "80:3006"
