@@ -1,7 +1,6 @@
 # MEMORIA PROYECTO FINAL DevOps
 
-Investigación sobre como implementar la filosofía devOps en proyectos con poco alcance mediante contendores.
-
+Investigación sobre como implementar la filosofía devOps en proyectos medianos de poco alcance mediante contendores.
 #### Índice
 
 
@@ -46,6 +45,7 @@ El uso de esta tecnologia cada vez es más reducido.
 
 Es una herramienta que todo el equipo conoce bien. Simplifica mucho la puesta en marcha de proyectos con varios contenedores. Con un simple comando se levanta el proyecto. La escalabilidad no va a ser un problema a corto/medio plazo en este tipo de proyectos.
 
+Nos centraremos en la técnica de dockerizar con imagenes stateless sin ningun tipo de bindeo instalando en ellas todo lo necesario para el correcto funcionamiento de nuestra app.
 #### -Tenemos un ganador-
 
 
@@ -63,16 +63,19 @@ Agregaremos pipelines a en nuestros entornos de PRE-producción y produccón.
 Los pipelines debén estar bien definidos con sus jobs de CI/CD/Deploy
 
 Durante el proceso de Jobs de CI comprobaremos entre otras cosas:
-    - La instalacion de las dependecias del mismo
-    - La calidad del código.
+- La instalacion de las dependecias del mismo
+- La calidad del código.
+
 Durante el proceso de Jobs de CD realizaremos entre otras cosas:
-    - No aseguraremos que las imágenes de los contenedores a utilizar se crean correctamente.
-    - Las guardamos en un registry (ejemplo: docker hub)
-    - Guardamos cada una de las imágenes con su tag correspondiente y unico.
+
+- No aseguraremos que las imágenes de los contenedores a utilizar se crean correctamente.
+- Las guardamos en un registry (ejemplo: docker hub)
+- Guardamos cada una de las imágenes con su tag correspondiente y unico.
+
 Durante el proceso de Deploy (via ssh) realizaremos entre otras cosas:
-    - Conectar y eliminar todo el contenido previo del proyecto, asi como sus contenedores e imagenes existentes.
-    - Descargamos la ultimas imagenes del proyectos.
-    - Levantamos el proyecto con el comando docker-compose up
+- Conectar y eliminar todo el contenido previo del proyecto, asi como sus contenedores e imagenes existentes.
+- Descargamos la ultimas imagenes del proyectos.
+- Levantamos el proyecto con el comando docker-compose up
 
 
 #### 4. Proyecto de ejemplo (https://github.com/datata/github-actions-deploy-compose-project.git)
