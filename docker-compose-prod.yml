@@ -6,7 +6,7 @@ services:
     tty: true
     container_name: web_devops
     restart: unless-stopped
-    command: sh -c 'npm install && node index.js'
+    command: sh -c 'npm install && node index.js && sleep 30'
     ports:
       - "80:3006"
 
