@@ -1,0 +1,16 @@
+POST http://localhost:3006/task
+content-type: application/json
+
+{
+    "title": "comprar",
+    "description": "comida"
+}
+
+###
+GET http://localhost:3006/task
+content-type: application/json
+
+###
+DELETE http://localhost:3006/task/620ade6c47bb9c067cedf261
+content-type: application/json
+

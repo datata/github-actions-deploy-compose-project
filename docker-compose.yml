@@ -11,6 +11,16 @@ services:
       - "3006:3006"
     volumes:
       - ./:/var/www/html
+    depends_on:
+      - db_devops
+
+  db_devops:
+    image: mongo
+    container_name: db_devops
+    restart: always
+    volumes:
+      - /my/own/datadir:/data/db 
+
   portainer:
     image: portainer/portainer-ce:latest
     container_name: portainer

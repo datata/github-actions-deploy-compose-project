@@ -9,6 +9,14 @@ services:
     command: sh -c 'npm install && node index.js'
     ports:
       - "80:3006"
+
+  db_devops:
+    image: mongo
+    container_name: db_devops
+    restart: always
+    volumes:
+      - /my/own/datadir:/data/db 
+
   portainer:
     image: portainer/portainer-ce:latest
     container_name: portainer
