@@ -88,6 +88,7 @@ Tecnologías del proyecto.
 - docker compose
 - github
 - github actions
+- portainer para monitorizacion y administración de docker
 
 Se trata de un api rest con deploy a un entorno de produccion.
 
