@@ -54,6 +54,18 @@ app.delete('/task/:id', async(req, res) => {
     }
 });
 
+app.get('/task/:id', async(req, res) => {
+    try {
+        const id = req.params.id;
+        const task = await Task.findById(id);
+        
+        return res.status(200).json(task);
+    } catch (error) {
+        logger.error(error);
+        return res.json({ error: "Task not found" });
+    }
+});
+
 
 
 app.listen(port, () => console.log(port));
