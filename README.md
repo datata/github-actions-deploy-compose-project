@@ -84,10 +84,13 @@ Api Rest
 
 Tecnologías del proyecto.
 - node/express
+- mongodb
 - docker
 - docker compose
 - github
 - github actions
+- git hooks
+- git flow
 - portainer para monitorizacion y administración de docker
 
 Se trata de un api rest con deploy a un entorno de produccion.
@@ -115,3 +118,7 @@ El servidor utilizado es Digital Ocean usando un droplet.
 2. Docker-Compose
 
 - https://docs.docker.com/compose/
+
+3. Conventional commits
+
+- https://www.conventionalcommits.org/en/v1.0.0/
