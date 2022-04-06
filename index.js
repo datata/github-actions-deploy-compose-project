@@ -25,6 +25,8 @@ app.get('/task', async(req, res) => {
 
 app.post('/task', async(req, res) => {
     const { title, description } = req.body;
+    
+    console.log("create task");
 
    try {
     const task = new Task(
